@@ -11,4 +11,4 @@ jobs:
     - run:
         name: Build application Docker image
         command: |
-          docker build -t "${IMAGE_URI}" .
+          docker build -t "${IMAGE_URI}" rails-app
