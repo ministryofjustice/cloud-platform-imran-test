@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: multi-container-demo
+  annotations:
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: basic-auth
+spec:
+  tls:
+  - hosts:
+    - multi-container-demo.apps.live-1.cloud-platform.service.justice.gov.uk
+  rules:
+  - host: multi-container-demo.apps.live-1.cloud-platform.service.justice.gov.uk
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: rails-app-service
+          servicePort: 3000
