@@ -19,5 +19,9 @@ jobs:
         name: Build application Docker image and push to ECR
         command: |
           $(aws ecr get-login --no-include-email)
-          docker build -t ${IMAGE_URI} rails-app
-          docker push ${IMAGE_URI}
+          docker build -t 754256621582.dkr.ecr.eu-west-2.amazonaws.com/imran-test/test:rails rails-app
+          docker push 754256621582.dkr.ecr.eu-west-2.amazonaws.com/imran-test/test:rails
+
+
+
+          
