@@ -16,6 +16,12 @@ jobs:
     - checkout
     - setup_remote_docker
     - run:
+        name: Build application Docker image and push to ECR
+        command: |
+          $(aws ecr get-login --no-include-email)
+          docker build -t 754256621582.dkr.ecr.eu-west-2.amazonaws.com/imran-test/test:rails rails-app
+          docker push 754256621582.dkr.ecr.eu-west-2.amazonaws.com/imran-test/test:rails
+    - run:
         name: Authenticate with cluster
         command: |
           echo -n ${KUBE_ENV_CACERT} | base64 -d > ./ca.crt
@@ -27,5 +33,5 @@ jobs:
     - run:
         name: Install demo helm chart
         command: |
-           helm version
+           helm upgrade demo helm-test --install -n ${KUBE_ENV_NAMESPACE}
           
