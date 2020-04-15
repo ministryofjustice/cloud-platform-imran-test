@@ -33,5 +33,5 @@ jobs:
     - run:
         name: Install demo helm chart
         command: |
-           helm upgrade demo helm-test --install -n ${KUBE_ENV_NAMESPACE}
+           echo 'helm version'
           
