@@ -1,8 +1,13 @@
 version: 2.1
 
+workflows:
+  test-env-vars:
+    jobs:
+      - build:
+          context: demo
+
 jobs:
   build:
-    context: demo
     docker:
       - image: cimg/base:2020.01
     steps:
