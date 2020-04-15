@@ -15,5 +15,5 @@ jobs:
       - run: 
           name: "echo an env var that is part of our context"
           command: |
-            echo $ECR_ENDPOINT
+            echo ${ECR_ENDPOINT}
 
