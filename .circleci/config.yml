@@ -1,21 +1,19 @@
-version: 2
+version: 2.1
 
 workflows:
   test-env-vars:
     jobs:
       - build:
-          context: demo # has an env var called MY_ENV_VA
+          context: demo # has an env var called MY_ENV_VAR
 
 jobs:
   build:
     docker:
-    - image: ${ECR_ENDPOINT}/imran-test/test:tools-circleci
-      environment:
-        IMAGE_URI: 754256621582.dkr.ecr.eu-west-2.amazonaws.com/imran-test/test:rails
+      - image: cimg/base:2020.01
     steps:
-    - checkout
-    - setup_remote_docker
-    - run:
-        name: Build application Docker image
-        command: |
-          echo ${KUBE_ENV_NAMESPACE}
+      - checkout
+      - run: 
+          name: "echo an env var that is part of our context"
+          command: |
+            echo $ECR_ENDPOINT
+
