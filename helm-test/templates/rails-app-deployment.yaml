@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: rails-app
-        image: 754256621582.dkr.ecr.eu-west-2.amazonaws.com/imran-test/test:ruby-app
+        image: 754256621582.dkr.ecr.eu-west-2.amazonaws.com/imran-test/test:rails
         ports:
         - containerPort: 3000
         env:

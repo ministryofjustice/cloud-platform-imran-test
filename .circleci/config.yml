@@ -21,7 +21,14 @@ jobs:
           $(aws ecr get-login --no-include-email)
           docker build -t 754256621582.dkr.ecr.eu-west-2.amazonaws.com/imran-test/test:rails rails-app
           docker push 754256621582.dkr.ecr.eu-west-2.amazonaws.com/imran-test/test:rails
-
-
+    - run:
+        name: Authenticate with cluster
+        command: |
+          echo -n ${KUBE_ENV_CACERT} | base64 -d > ./ca.crt
+          kubectl config set-cluster ${KUBE_ENV_NAME} --certificate-authority=./ca.crt --server=https://api.${KUBE_ENV_NAME}
+          kubectl config set-credentials circleci --token=${KUBE_ENV_TOKEN}
+          kubectl config set-context ${KUBE_ENV_NAME} --cluster=${KUBE_ENV_NAME} --user=circleci --namespace=${KUBE_ENV_NAMESPACE}
+          kubectl config use-context ${KUBE_ENV_NAME}
+          kubectl --namespace=${KUBE_ENV_NAMESPACE} get pods
 
           
