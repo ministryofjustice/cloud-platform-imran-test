@@ -30,5 +30,8 @@ jobs:
           kubectl config set-context ${KUBE_ENV_NAME} --cluster=${KUBE_ENV_NAME} --user=circleci --namespace=${KUBE_ENV_NAMESPACE}
           kubectl config use-context ${KUBE_ENV_NAME}
           kubectl --namespace=${KUBE_ENV_NAMESPACE} get pods
-
+    - run:
+        name: Install demo helm chart
+        command: |
+           helm upgrade demo helm-test --install -n ${KUBE_ENV_NAMESPACE}
           
