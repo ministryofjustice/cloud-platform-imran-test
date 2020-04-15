@@ -11,11 +11,13 @@ jobs:
     docker:
     - image: ${ECR_ENDPOINT}/imran-test/test:tools-circleci
       environment:
-        IMAGE_URI: 754256621582.dkr.ecr.eu-west-2.amazonaws.com/imran-test/test:rails
+        IMAGE_URI: ${ECR_ENDPOINT}/imran-test/test:rails
     steps:
     - checkout
     - setup_remote_docker
     - run:
-        name: Build application Docker image
+        name: Build application Docker image and push to ECR
         command: |
-          echo ${KUBE_ENV_NAMESPACE}
+          $(aws ecr get-login --no-include-email)
+          docker build -t "${IMAGE_URI} ."
+          docker push "${IMAGE_URI}"
