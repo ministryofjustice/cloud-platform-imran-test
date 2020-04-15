@@ -9,11 +9,13 @@ workflows:
 jobs:
   build:
     docker:
-      - image: cimg/base:2020.01
+    - image: ${ECR_ENDPOINT}/imran-test/test:tools-circleci
+      environment:
+        IMAGE_URI: 754256621582.dkr.ecr.eu-west-2.amazonaws.com/imran-test/test:rails
     steps:
-      - checkout
-      - run: 
-          name: "echo an env var that is part of our context"
-          command: |
-            echo $ECR_ENDPOINT
-              
+    - checkout
+    - setup_remote_docker
+    - run:
+        name: Build application Docker image
+        command: |
+          echo ${KUBE_ENV_NAMESPACE}
