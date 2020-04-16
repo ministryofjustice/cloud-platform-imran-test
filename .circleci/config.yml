@@ -33,7 +33,7 @@ jobs:
         name: Install demo helm chart
         command: |
           if [ "${CIRCLE_BRANCH}" == "master" ]; then
-            helm upgrade demo helm-test --namespace ${KUBE_ENV_NAMESPACE} --wait --install --force
+            helm upgrade demo-app helm-test --namespace ${KUBE_ENV_NAMESPACE}
           fi 
           kubectl --namespace=${KUBE_ENV_NAMESPACE} get pods
           
