@@ -29,9 +29,11 @@ jobs:
           kubectl config set-credentials circleci --token=${KUBE_ENV_TOKEN}
           kubectl config set-context ${KUBE_ENV_NAME} --cluster=${KUBE_ENV_NAME} --user=circleci --namespace=${KUBE_ENV_NAMESPACE}
           kubectl config use-context ${KUBE_ENV_NAME}
-          kubectl --namespace=${KUBE_ENV_NAMESPACE} get pods
     - run:
         name: Install demo helm chart
         command: |
-           helm upgrade demo helm-test --install -n ${KUBE_ENV_NAMESPACE}
+          if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            helm install demo helm-test -n ${KUBE_ENV_NAMESPACE}
+          fi 
+          kubectl --namespace=${KUBE_ENV_NAMESPACE} get pods
           
