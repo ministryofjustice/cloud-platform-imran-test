@@ -32,6 +32,4 @@ jobs:
     - run:
         name: Install demo helm chart
         command: |
-          helm install demo helm-test -n ${KUBE_ENV_NAMESPACE} 
-          kubectl --namespace=${KUBE_ENV_NAMESPACE} get pods
-          
+          helm install demo helm-test -n ${KUBE_ENV_NAMESPACE}
