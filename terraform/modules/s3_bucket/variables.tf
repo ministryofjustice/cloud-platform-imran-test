@@ -1,7 +1,7 @@
 variable "aws_account_id" {
   type        = "string"
   description = "account id used as the s3's bucket prinicpal"
-  default     = "355228507084"
+  default     = "754256621582"
 }
 
 variable "project_name" {
