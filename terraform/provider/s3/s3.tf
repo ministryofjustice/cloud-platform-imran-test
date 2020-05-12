@@ -10,12 +10,8 @@ module "webops_vault_s3_bucket" {
   infrastructure-support = "platform@digtal.justice.gov.uk"
 
   providers = {
-    # Can be either "aws.london" or "aws.ireland"
     aws = aws.london
-    /*
-   * The following example can be used if you need to define CORS rules for your s3 bucket. 
-   *  Follow the guidance here "https://www.terraform.io/docs/providers/aws/r/s3_bucket.html#using-cors"
-   *  
+
 
   cors_rule =[
     {
