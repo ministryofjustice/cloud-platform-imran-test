@@ -17,7 +17,7 @@ module "webops_vault_s3_bucket" {
 resource "kubernetes_secret" "vault_webops_s3_bucket" {
   metadata {
     name      = "vault-webops-s3-bucket-output"
-    namespace = "webops"
+    namespace = "vault"
   }
 
   data = {
