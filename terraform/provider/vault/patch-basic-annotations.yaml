@@ -1,0 +1,7 @@
+spec:
+  template:
+    metadata:
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/agent-inject-secret-s3-webops: "secret/s3-webops"
+        vault.hashicorp.com/role: "webops-role"
