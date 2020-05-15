@@ -61,7 +61,7 @@ resource "vault_kubernetes_auth_backend_role" "webops-role" {
   bound_service_account_names      = ["aws-s3-webops"]
   bound_service_account_namespaces = ["webops"]
   token_ttl                        = 3600
-  policies                         = ["s3-webops-pol"]
+  token_policies                   = ["s3-webops-pol"]
   audience                         = "vault"
 }
 
