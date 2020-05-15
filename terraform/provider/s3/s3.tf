@@ -38,8 +38,8 @@ resource "vault_generic_secret" "s3-webops" {
 
   data_json = <<EOT
 {
-  "access_key": "${module.webops_vault_s3_bucket.access_key_id}",
-  "secrert_key": "${module.webops_vault_s3_bucket.secret_access_key}"
+  "aws_access_key": "${module.webops_vault_s3_bucket.access_key_id}",
+  "aws_secret_id": "${module.webops_vault_s3_bucket.secret_access_key}"
 }
 EOT
 }
