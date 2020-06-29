@@ -1,3 +1,5 @@
+
+/*
 terraform {
   backend "s3" {
     bucket  = "cloud-platform-terraform-state"
@@ -7,6 +9,7 @@ terraform {
     key = "terraform.tfstate"
   }
 }
+*/
 
 provider "aws" {
   region = "eu-west-1"
