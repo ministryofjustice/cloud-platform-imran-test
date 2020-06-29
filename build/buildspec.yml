@@ -1,0 +1,16 @@
+---
+version: 0.2
+
+env:
+  variables:
+    IMAGE_REPO_NAME: ministryofjustice/cloud-platform-tools:1.15
+phases:
+  install:
+    runtime-versions:
+      docker: 18
+    commands:
+      - cd terraform/provider/s3/
+      - terraform plan
+ 
+artifacts:
+      files: build.json
