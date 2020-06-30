@@ -9,8 +9,10 @@ phases:
     runtime-versions:
       docker: 18
     commands:
-      - cd terraform/provider/s3/
+      - cd providers/s3
+      - terraform init
       - terraform plan
+      - helm version
  
 artifacts:
       files: build.json
