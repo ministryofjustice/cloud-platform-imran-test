@@ -9,10 +9,9 @@ phases:
     runtime-versions:
       docker: 18
     commands:
-      - cd providers/s3
+      - cd namespaces/team1/resources
       - terraform init
       - terraform plan
-      - helm version
  
 artifacts:
       files: build.json
