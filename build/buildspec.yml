@@ -4,6 +4,8 @@ version: 0.2
 env:
   variables:
     IMAGE_REPO_NAME: ministryofjustice/cloud-platform-tools:1.15
+    TF_VAR_cluster_name: jb-test-2
+    TF_VAR_cluster_state_bucket: cloud-platform-terraform-state
 phases:
   install:
     runtime-versions:
