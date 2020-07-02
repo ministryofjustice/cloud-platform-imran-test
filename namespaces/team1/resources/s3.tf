@@ -13,3 +13,17 @@ module "webops_ecr_scan_repos_s3_bucket" {
     aws = aws.london
   }
 }
+
+resource "kubernetes_secret" "example_team_s3_bucket" {
+  metadata {
+    name      = "example-team-s3-bucket-output"
+    namespace = "imran-test"
+  }
+
+  data = {
+    access_key_id     = module.example_team_s3_bucket.access_key_id
+    secret_access_key = module.example_team_s3_bucket.secret_access_key
+    bucket_arn        = module.example_team_s3_bucket.bucket_arn
+    bucket_name       = module.example_team_s3_bucket.bucket_name
+  }
+}
