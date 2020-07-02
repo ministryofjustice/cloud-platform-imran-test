@@ -1,5 +1,5 @@
 
-module "webops_ecr_scan_repos_s3_bucket" {
+module "example_team_s3_bucket" {
   source = "github.com/ministryofjustice/cloud-platform-terraform-s3-bucket?ref=4.1"
 
   team_name              = "cloudplatform"
