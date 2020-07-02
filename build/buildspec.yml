@@ -1,22 +1,17 @@
 ---
 version: 0.2
 
-env:
-  variables:
-    IMAGE_REPO_NAME: ministryofjustice/cloud-platform-tools:1.15
-    TF_VAR_cluster_name: jb-test-2
-    TF_VAR_cluster_state_bucket: cloud-platform-terraform-state
-    KOPS_STATE_STORE: s3://cloud-platform-kops-state
+
 phases:
   install:
     runtime-versions:
       docker: 18
     commands:
       - cd namespaces/team1/resources
-      - kops export kubecfg jb-test-2.cloud-platform.service.justice.gov.uk
+      - kops export kubecfg ${TF_VAR_cluster_name}.cloud-platform.service.justice.gov.uk
       - kubectl get ns
-   #   - terraform init
-   #   - terraform apply -auto-approve
+      - terraform init
+      - terraform apply -auto-approve
  
 artifacts:
       files: build.json
