@@ -8,7 +8,7 @@ terraform {
 
 terraform {
   backend "s3" {
-    bucket  = "cloud-platform-75a32f02f75ca295a03251328669dc68"
+    bucket  = "cloud-platform-491790a26ee9d2082cd2c58d90b180da"
     region  = "eu-west-2"
     profile = "moj-cp"
     key = "team1/terraform.tfstate"
