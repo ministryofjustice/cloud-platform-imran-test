@@ -6,7 +6,7 @@ env:
     IMAGE_REPO_NAME: ministryofjustice/cloud-platform-tools:1.15
     TF_VAR_cluster_name: jb-test-2
     TF_VAR_cluster_state_bucket: cloud-platform-terraform-state
-    KOPS_STATE_STORE: s3://cloud-platform-kops-stat
+    KOPS_STATE_STORE: s3://cloud-platform-kops-state
 phases:
   install:
     runtime-versions:
